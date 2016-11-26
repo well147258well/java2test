@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<context:annotation-config />
+	<bean id="sequenceGenerator" class="tw.edu.nuk.mis.spring.sequence.SequenceGenerator">
+		<property name="prefix">
+			<ref bean="listPrefixGenerator" />
+		</property>
+		<property name="suffix">
+			<value></value>
+		</property>
+		<property name="initial">
+			<value type="int">1</value>
+		</property>
+	</bean>
+	<bean id="stringPrefixGenerator" class="tw.edu.nuk.mis.spring.sequence.StringPrefixGenerator">
+		<property name="prefix" value="O"></property>
+	</bean>
+	<bean id="datePrefixGenerator" class="tw.edu.nuk.mis.spring.sequence.DatePrefixGenerator">
+		<property name="pattern" value="yyMM"></property>
+		<property name="prefix" value="O"></property>
+	</bean>
+	<bean id="listPrefixGenerator" class="tw.edu.nuk.mis.spring.sequence.ListPrefixGenerator">
+		<property name="prefixes">
+			<list>
+				<value>9</value>
+				<value>2222</value>
+				<value>33</value>
+			</list>
+		</property>
+	</bean>
+</beans>
